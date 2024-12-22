@@ -138,7 +138,15 @@ Return `400 Bad Request` with a JSON object containing field-specific error mess
 Return `404 Not Found` with an appropriate message.
 
 ##### Conflict Errors: 
-Return `409 Conflict` when trying to borrow an already borrowed book or return a book that isn’t borrowed.
+Return `409 Conflict` when trying to borrow an already borrowed book or return a book that isnï¿½t borrowed.
+
+## ISBN Rules and Assumptions
+* Two books with the same ISBN must have the same title and author.
+* Two books with the same title and author but different ISBNs are treated as different books.
+* Multiple copies of books with the same ISBN are allowed.
+* Borrowers and books must be registered before borrowing or returning operations.
+* A book can only be borrowed by one borrower at a time.
+* Validation ensures meaningful data is provided for borrowers and books.
 
 ## Running the Application
 
