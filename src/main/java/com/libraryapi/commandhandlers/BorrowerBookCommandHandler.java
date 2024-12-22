@@ -7,6 +7,7 @@ import com.libraryapi.dao.repositories.BookRepository;
 import com.libraryapi.dao.repositories.BorrowerRepository;
 import com.libraryapi.model.Book;
 import com.libraryapi.model.Borrower;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,7 @@ public class BorrowerBookCommandHandler implements Command.Handler<BorrowerBookC
         this.borrowerRepository = borrowerRepository;
     }
 
+    @Transactional
     @Override
     public ResponseEntity<String> handle(BorrowerBookCommand command) {
         logger.debug("Finding existing borrower request to process with the id: {}", command.getBorrowerId());
